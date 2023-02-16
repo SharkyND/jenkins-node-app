@@ -1,7 +1,7 @@
 pipeline{
     environment {
-    registry = "sharkynd/simplenodeapp"
-    registryCredential = 'dockerhub'
+    DOCKERHUB_REGISTRY = "sharkynd/simplenodeapp"
+    DOCKERHUB_CREDENTIALS = credentials('sharky-dockerhub')
     dockerImage = ''
     }
   agent{
@@ -20,9 +20,7 @@ pipeline{
     // }
     stage('Building Docker Image') {
       steps {
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-              }
+        sh "docker build -t $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
       }
     }
   }

@@ -15,7 +15,7 @@ pipeline{
   stages{
     stage('BUILD DOCKER'){
       steps {
-        git 'git@github.com:naistangz/Docker_Jenkins_Pipeline.git'
+        git 'git@github.com:SharkyND/jenkins-node-app.git'
       }
     }
     stage('Building Docker Image') {

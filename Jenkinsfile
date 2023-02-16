@@ -24,12 +24,6 @@ pipeline{
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
               }
       }
-      steps{
-        echo "Building"
-        sh '''
-        echo "testing the build"
-        '''
-      }
     }
   }
 }

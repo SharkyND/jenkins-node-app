@@ -4,11 +4,13 @@ pipeline{
     DOCKERHUB_CREDENTIALS = credentials('sharky-dockerhub')
     dockerImage = ''
     }
-  agent{
-    node{
-      label 'docker-image-alpine'
-    }
-  }
+  // agent{
+  //   // node{
+  //   //   label 'docker-image-alpine'
+  //   // }
+  // }
+  agent any
+  
   triggers{
     pollSCM '* * * * *'
   }

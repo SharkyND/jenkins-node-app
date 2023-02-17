@@ -1,0 +1,17 @@
+pipeline {
+    environment {
+    DOCKERHUB_REGISTRY = "sharkynd/simplenodeapp"
+    DOCKERHUB_CREDENTIALS = credentials('sharky-dockerhub')
+    dockerImage = ''
+    }
+  agent {
+    docker { image 'node:16-alpine' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh "echo $DOCKERHUB_REGISTRY"
+      }
+    }
+  }
+}

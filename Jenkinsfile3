@@ -4,9 +4,7 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('sharky-dockerhub')
     dockerImage = ''
     }
-  agent {
-    docker { image 'node:16-alpine' }
-  }
+  agent any
   stages {
     stage('Test') {
       steps {

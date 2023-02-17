@@ -16,18 +16,20 @@ pipeline {
         sh "docker build -t $DOCKERHUB_REGISTRY:$BUILD_NUMBER ."
       }
     }
-    stage('Push docker image to duckerhub'){
+    stage('Authenticate'){
       steps {
         sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
       }
+    }
+    stage('Docker Push'){
       steps {
         sh "docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
       }
     }
   }
-  // post {
-  //   always {
-  //     sh 'docker logout'
-  //   }
-  // }
+  post {
+    always {
+      sh 'docker logout'
+    }
+  }
 }

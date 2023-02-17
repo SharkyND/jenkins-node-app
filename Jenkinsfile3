@@ -17,7 +17,7 @@ pipeline {
       }
     }
     stage('Push docker image to duckerhub'){
-      step {
+      steps {
         sh "echo $DOCKERHUB_CREDENTIALS_PSW"
       }
     //   steps {

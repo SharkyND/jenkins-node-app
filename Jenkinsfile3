@@ -18,11 +18,16 @@ pipeline {
     }
     stage('Push docker image to duckerhub'){
       steps {
-        sh "echo $DOCKERHUB_CREDENTIALS_PSW"
+        sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
       }
-    //   steps {
-    //     sh "docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
-    //   }
+      steps {
+        sh "docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
+      }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout'
     }
   }
 }

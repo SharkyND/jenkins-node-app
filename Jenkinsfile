@@ -20,6 +20,7 @@ pipeline{
     }
     stage('Building Docker Image') {
       steps {
+        sh "echo $DOCKERHUB_REGISTRY"
         sh "docker build -t $DOCKERHUB_REGISTRY:$BUILD_NUMBER ."
       }
     }

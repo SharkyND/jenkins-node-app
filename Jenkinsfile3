@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Build Dockerfile'){
       steps {
-        sh "docker build . -t sharky/simplenodeapp:v2"
+        sh "docker ps"
       }
     }
   }

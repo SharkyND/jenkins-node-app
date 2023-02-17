@@ -13,8 +13,16 @@ pipeline {
     }
     stage('Build Dockerfile'){
       steps {
-        sh "docker ps"
+        sh "docker build -t $DOCKERHUB_REGISTRY:$BUILD_NUMBER ."
       }
     }
+    stage('Push docker image to duckerhub'){
+      step {
+        sh "echo $DOCKERHUB_CREDENTIALS_PSW"
+      }
+    //   steps {
+    //     sh "docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
+    //   }
+    // }
   }
 }

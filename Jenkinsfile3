@@ -23,6 +23,6 @@ pipeline {
     //   steps {
     //     sh "docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER"
     //   }
-    // }
+    }
   }
 }

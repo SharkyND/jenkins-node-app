@@ -13,5 +13,10 @@ pipeline {
         sh "echo $DOCKERHUB_REGISTRY"
       }
     }
+    stage('Build Dockerfile'){
+      steps {
+        sh "docker build . -t sharky/simplenodeapp:v2"
+      }
+    }
   }
 }
